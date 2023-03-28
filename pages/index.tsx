@@ -6,6 +6,7 @@ const Home: NextPage = () => {
       <h1 className="text-4xl font-bold">
         Welcome to <a href="https://nextjs.org">Next.js Starter Template!</a>
       </h1>
+      <p>random text</p>
     </main>
   );
 };
