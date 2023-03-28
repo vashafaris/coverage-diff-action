@@ -27,5 +27,15 @@ jobs:
       - name: Perform testing
         run: yarn test:ci --coverage
 
-      - name: Perform build source
-        run: yarn build
+      - name: Create coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage
+
+      - name: Coverage diff check
+        continue-on-error: ${{ github.ref == 'refs/heads/main' }}
+        uses: greatwizard/coverage-diff-action@v1.0.8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          badge-enabled: false
